@@ -9,7 +9,7 @@ This is mostly me storing my config, which is a clone of [kickstart.nvim](https:
 Installed `render-markdown.nvim` to preview markdown files.
 
 ```lua
-    vim.pack.add { gh 'MeanderingProgrammer/render-markdown.nvim' }
+vim.pack.add { gh 'MeanderingProgrammer/render-markdown.nvim' }
 ```
 
 ---
@@ -120,3 +120,69 @@ I also changed the neo-tree reveal mapping from `\\` to `<leader>ft` ie. `<SPACE
 --lua/kickstart/plugins/neo-tree.lua
 vim.keymap.set('n', '<leader>ft', '<Cmd>Neotree reveal<CR>', { desc = 'NeoTree reveal', silent = true })
 ```
+
+## My Terminal setup
+
+If you're interested in my Terminal setup, it's pretty basic.
+
+- [Ghostty](https://ghostty.org/) as an emulator on my Mac, WSL witn Windows Terminal in Windows
+- [Oh My Zsh](https://ohmyz.sh/) as a framework
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k) theme to offer a better looking prompt
+- [zinit](https://github.com/zdharma-continuum/zinit#install) helps me install plugins and snippets for Zsh
+- [catppuccin](https://github.com/JannoTjarks/catppuccin-zsh) theme of course because cats rule the internet 🐱
+
+Once all that's done I install some snippets and plugins into my `.zshrc` file so that they load every time.
+
+```bash
+# Git aliases
+zinit snippet OMZP::git
+
+# Docker aliases and completions
+zinit snippet OMZP::docker
+
+# kubectl aliases and completions
+zinit snippet OMZP::kubectl
+
+# sudo shortcut (press ESC twice)
+zinit snippet OMZP::sudo
+
+# Extract various archive formats
+zinit snippet OMZP::extract
+```
+
+Then some plugins
+
+```bash
+# Fuzzy completion (requires fzf)
+zinit light Aloxaf/fzf-tab
+
+# ==========================================
+# Productivity and navigation
+# ==========================================
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-history-substring-search
+zinit light agkozak/zsh-z
+zinit light MichaelAquilina/zsh-you-should-use
+zinit light hlissner/zsh-autopair
+
+# ==========================================
+# Syntax highlighting (load last)
+# ==========================================
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# ==========================================
+# Optional: Oh My Zsh snippets
+# ==========================================
+zinit snippet OMZP::git
+zinit snippet OMZP::sudo
+zinit snippet OMZP::extract
+
+# ==========================================
+# Optional: forgit (requires fzf and Git)
+# ==========================================
+zinit light wfxr/forgit
+
+```
+
+
